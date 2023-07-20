@@ -1,3 +1,4 @@
+import './style.css';
 import { Element } from "../abstract/element";
 import { Main } from "./main/main";
 

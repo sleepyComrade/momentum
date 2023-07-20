@@ -9,7 +9,7 @@
   padding: 0;
 }
 
-body {
+#root {
   width: 100vw;
   height: 100vh;
   font-family: 'Arial', sans-serif;
@@ -22,7 +22,7 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
   background-blend-mode: multiply;
   transition: background-image 1s ease-in-out;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .main-overlay {
@@ -429,14 +429,6 @@ body {
   font-size: 20px;
   color: #fff;
   opacity: .6;
-}
-
-.time {
-  height: 124px;
-  margin-bottom: 10px;
-  font-family: 'Arial-MT';
-  font-size: 100px;
-  letter-spacing: -4px;
 }
 
 .date {
@@ -1009,10 +1001,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  .time {
-    height: 88px;
-    font-size: 72px;
-  }
 
   .greeting-container {
     display: flex;
@@ -1189,12 +1177,6 @@ body {
   }
 
   /* weather end */
-
-  .time {
-    height: 45px;
-    margin-bottom: 2px;
-    font-size: 32px;
-  }
 
   .date {
     height: 24px;
