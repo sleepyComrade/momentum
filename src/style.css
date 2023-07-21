@@ -431,12 +431,6 @@
   opacity: .6;
 }
 
-.date {
-  height: 28px;
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
 .greeting-container {
   position: relative;
   max-width: 100%;
@@ -1177,12 +1171,6 @@
   }
 
   /* weather end */
-
-  .date {
-    height: 24px;
-    font-size: 16px;
-    margin-bottom: 3px;
-  }
 
   .greeting-container {
     height: 28px;
