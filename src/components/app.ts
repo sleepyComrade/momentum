@@ -1,11 +1,13 @@
 import './style.css';
 import { Element } from "../abstract/element";
 import { Main } from "./main/main";
+import { Loader } from "./loader/loader";
 import { ISettingsData } from "../interfaces";
 
 export class App extends Element<HTMLDivElement> {
   main: Main;
   data: ISettingsData;
+  loader: Loader;
   constructor(parent: HTMLElement, className: string) {
     super(parent, 'div', className);
     this.data = {
@@ -17,6 +19,7 @@ export class App extends Element<HTMLDivElement> {
     } else {
       this.localStorageUpdate();
     }
+    this.loader = new Loader(this.el, 'loader');
     this.main = new Main(this.el, 'main');
 
     this.main.onNameChange = (value) => {
@@ -25,6 +28,12 @@ export class App extends Element<HTMLDivElement> {
     }
     this.main.onBgLoad = (value) => {
       parent.style.backgroundImage = value;
+    }
+
+    window.onload = () => {
+      setTimeout(() => {
+        this.loader.fadeOut();
+      }, 700);
     }
   }
 
