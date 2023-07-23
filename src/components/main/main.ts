@@ -11,6 +11,7 @@ export class Main extends Element<HTMLElement> {
   date: DateInfo;
   greeting: Greeting;
   onNameChange: (value: string) => void;
+  onBgLoad: (value: string) => void;
   constructor(parent: HTMLElement, className: string) {
     super(parent, 'main', className);
     this.sliderButtons = new SliderButtons(this.el, 'slider-icons');
@@ -20,6 +21,10 @@ export class Main extends Element<HTMLElement> {
 
     this.greeting.onNameChange = (value) => {
       this.onNameChange(value);
+    }
+
+    this.sliderButtons.onBgLoad = (value) => {
+      this.onBgLoad(value);
     }
 
     const update = () => {

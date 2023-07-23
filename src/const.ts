@@ -14,3 +14,9 @@ export const greetings = {
     placeholder: '[Введите имя]'
   }
 };
+
+export const getTimeOfDay = () => {
+  const hours = new Date().getHours();
+  const timesOfDay = ['night', 'morning', 'afternoon', 'evening'];
+  return timesOfDay[Math.floor(hours / 6)];
+}

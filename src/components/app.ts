@@ -23,6 +23,9 @@ export class App extends Element<HTMLDivElement> {
       this.data.name = value;
       this.localStorageUpdate();
     }
+    this.main.onBgLoad = (value) => {
+      parent.style.backgroundImage = value;
+    }
   }
 
   localStorageUpdate() {

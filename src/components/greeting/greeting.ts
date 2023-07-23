@@ -2,6 +2,7 @@ import './style.css';
 import { Element } from "../../abstract/element";
 import { ILangGreetings } from "../../interfaces";
 import { greetings } from "../../const";
+import { getTimeOfDay } from "../../const";
 
 export class Greeting extends Element<HTMLDivElement> {
   greetings: ILangGreetings;
@@ -42,14 +43,8 @@ export class Greeting extends Element<HTMLDivElement> {
     });
   }
 
-  getTimeOfDay() {
-    const hours = new Date().getHours();
-    const timesOfDay = ['night', 'morning', 'afternoon', 'evening'];
-    return timesOfDay[Math.floor(hours / 6)];
-  }
-
   showGreeting(lang: string) {
-    this.currentGreeting.el.textContent = `${this.greetings[lang][this.getTimeOfDay()]}, `;
+    this.currentGreeting.el.textContent = `${this.greetings[lang][getTimeOfDay()]}, `;
     this.input.el.setAttribute('placeholder', this.greetings[lang]['placeholder']);
   }
 
