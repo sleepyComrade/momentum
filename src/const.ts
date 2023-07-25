@@ -15,6 +15,29 @@ export const greetings = {
   }
 };
 
+export const weather = {
+  en: {
+    windSpeed: 'Wind speed',
+    metric: 'm/s',
+    humidity: 'Humidity',
+    placeholder: '[Enter city]',
+    defaultCity: 'Minsk',
+    emptyInputError: 'Error! Please enter city!',
+    cityError1: 'Error! city not found for',
+    cityError2: ''
+  },
+  ru: {
+    windSpeed: 'Скорость ветра',
+    metric: 'м/с',
+    humidity: 'Влажность',
+    placeholder: '[Введите город]',
+    defaultCity: 'Минск',
+    emptyInputError: 'Ошибка! Пожалуйста, введите город!',
+    cityError1: 'Ошибка! Город',
+    cityError2: ' не найден'
+  }
+}
+
 export const getTimeOfDay = () => {
   const hours = new Date().getHours();
   const timesOfDay = ['night', 'morning', 'afternoon', 'evening'];

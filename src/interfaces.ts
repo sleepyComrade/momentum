@@ -18,4 +18,28 @@ export interface ILangGreetings {
 export interface ISettingsData {
   language: string;
   name: string;
+  city: string;
+}
+
+export interface ILangWeather {
+  [en: string]: {
+    windSpeed: string;
+    metric: string;
+    humidity: string;
+    placeholder: string;
+    defaultCity: string;
+    emptyInputError: string;
+    cityError1: string;
+    cityError2: string;
+  };
+  ru: {
+    windSpeed: string;
+    metric: string;
+    humidity: string;
+    placeholder: string;
+    defaultCity: string;
+    emptyInputError: string;
+    cityError1: string;
+    cityError2: string;
+  };
 }
