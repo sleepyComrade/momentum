@@ -55,17 +55,6 @@
   visibility: visible;
 }
 
-.player {
-  width: 270px;
-  min-height: 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-  border-radius: 20px;
-}
-
 .current-track-wrap {
   display: flex;
   justify-content: space-around;
@@ -865,14 +854,6 @@
 
 @media (max-width: 550px) {
   /* player start */
-
-  .player {
-    width: 216px;
-    min-height: 200px;
-    margin-top: 8px;
-    font-size: 12px;
-    border-radius: 16px;
-  }
 
   .current-track-wrap {
     gap: 5px;
