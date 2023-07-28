@@ -19,6 +19,7 @@ export interface ISettingsData {
   language: string;
   name: string;
   city: string;
+  quotes: string;
 }
 
 export interface ILangWeather {
