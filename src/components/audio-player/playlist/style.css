@@ -1,0 +1,40 @@
+.play-list {
+  width: 80%;
+  height: 106px;
+  min-width: 200px;
+  margin-top: 15px;
+  text-align: left;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(198, 198, 198) transparent;
+}
+
+.play-list::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+
+.play-list::-webkit-scrollbar-thumb {
+  background-color: rgb(198, 198, 198);
+  border-radius: 5px;
+}
+
+.play-list::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+@media (max-width: 550px) {
+  .play-list {
+    height: 84.8px;
+    min-width: 160px;
+    margin-top: 10px;
+  }
+
+  .play-list::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .play-list::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+  }
+}

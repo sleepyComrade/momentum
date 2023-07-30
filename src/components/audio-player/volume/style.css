@@ -1,0 +1,119 @@
+.volume-wrap {
+  position: relative;
+  left: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.volume-slider {
+  position: relative;
+  width: 50%;
+  margin-top: 5px;
+}
+
+.slider-progress {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  width: 100%;
+  height: 0.4rem;
+  outline: none;
+  border-radius: 3px;
+  border: none;
+  background-color: rgb(198, 198, 198);
+  box-shadow: 0 0 2px 1px rgb(255, 90, 90), 0 0 5px 3px rgb(204, 0, 0);
+}
+
+.slider-progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  z-index: 4;
+  position: relative;
+  width: 1.2rem;
+  height: 1.2rem;
+  background-color: rgb(143, 33, 33);
+  border: 2px solid rgb(198, 198, 198);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider-progress::-moz-range-thumb {
+  -moz-appearance: none;
+  z-index: 4;
+  position: relative;
+  width: 0.9rem;
+  height: 0.9rem;
+  background-color: rgb(143, 33, 33);
+  border: 2px solid rgb(198, 198, 198);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.volume-slider-progress {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-22%);
+  -moz-transform: translateY(-10%);
+  left: 0;
+  width: 50%;
+  height: 0.4rem;
+  background-color: rgb(143, 33, 33);
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.volume-icon {
+  width: 30px;
+  height: 30px;
+  margin-top: 8px;
+  margin-left: 10px;
+  filter: brightness(0) invert(1);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+  opacity: .85;
+  transition: all 0.2s linear;
+}
+
+.volume-icon:hover {
+  opacity: 1;
+  scale: 1.05;
+}
+
+@media (max-width: 550px) {
+  .volume-wrap {
+    left: 2.4px;
+  }
+
+  .volume-slider {
+    margin-top: 4px;
+  }
+
+  .slider-progress {
+    height: 0.32rem;
+    border-radius: 2.4px;
+  }
+
+  .slider-progress::-webkit-slider-thumb {
+    width: 0.96rem;
+    height: 0.96rem;
+  }
+
+  .slider-progress::-moz-range-thumb {
+    width: 0.72rem;
+    height: 0.72rem;
+  }
+
+  .volume-slider-progress {
+    transform: translateY(-10%);
+    height: 0.32rem;
+  }
+
+  .volume-icon {
+    width: 24px;
+    height: 24px;
+    margin-top: 6.4px;
+    margin-left: 8px;
+  }
+}
