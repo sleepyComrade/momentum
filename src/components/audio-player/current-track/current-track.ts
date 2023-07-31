@@ -22,15 +22,37 @@ export class CurrentTrack extends Element<HTMLElement> {
     this.trackNum = 0;
     this.curTime = 0;
     this.isPLay = false;
-    this.controls = new ControlsWrap(this.el, 'controls-wrap');
+    this.controls = new ControlsWrap(this.el, 'controls-wrap', this.playlist);
     this.progress = new Progress(this.el, 'progress-duration-wrap');
+
+    this.audio.onplay = () => {
+      this.audio.ontimeupdate = () => {
+        this.progress.rotateProgressBar();
+        this.controls.getCurTitle(this.playlist[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).music][this.trackNum]);
+        this.progress.setTime();
+      }
+    }
+    this.audio.onended = () => {
+      this.switchAudio(1);
+    }
 
     this.controls.onPlay = () => {
       this.playPause();
     }
-
     this.controls.onSwitch = (n) => {
       this.switchAudio(n);
+    }
+
+    this.progress.onSetTime = (degree) => {
+      this.curTime = (degree * this.audio.duration) / 360;
+      this.audio.currentTime = this.curTime;
+    }
+    this.progress.onRotate = () => {
+      this.curTime = this.audio.currentTime;
+      return (this.curTime / (this.audio.duration)) * 360;
+    }
+    this.progress.onTimeConvert = (isDuration) => {
+      return isDuration ? Math.floor(this.audio.duration) : Math.floor(this.audio.currentTime);
     }
   }
 
@@ -57,9 +79,7 @@ export class CurrentTrack extends Element<HTMLElement> {
 
   switchAudio(dir: number, n?: number) {
     this.curTime = 0;
-    // halfCircles.forEach(el => el.style.transform = 'rotate(0deg)');
-    // barSlider.style.transform = 'rotate(0deg)';
-    // barCircle.style.transform = 'rotate(0deg)';
+    this.progress.setBarZero();
     if (this.isPLay) {
       this.isPLay = false;
     } else this.controls.togglePlayButton();
