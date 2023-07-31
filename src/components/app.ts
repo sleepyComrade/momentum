@@ -18,7 +18,8 @@ export class App extends Element<HTMLDivElement> {
       language: 'en',
       name: '',
       city: '',
-      quotes: 'sw'
+      quotes: 'sw',
+      music: 'sw'
     }
     if (localStorage.sleepyComradeMomentum) {
       this.data = JSON.parse(localStorage.getItem('sleepyComradeMomentum'));

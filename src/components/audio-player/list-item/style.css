@@ -1,0 +1,46 @@
+.play-item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  list-style: none;
+  opacity: .8;
+  cursor: default;
+  transition: .3s;
+}
+
+.play-item:hover {
+  opacity: 1;
+}
+
+.item-active {
+  color: #e2d17d;
+  background-color: rgba(169, 169, 169, 0.3);
+}
+
+.list-play-icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+  background-image: url("../../../assets/svg/play.svg");
+}
+
+.pause {
+  background-image: url("../../../assets/svg/pause.svg");
+}
+
+@media (max-width: 550px) {
+  .play-item {
+    padding: 4px;
+  }
+
+  .list-play-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+  }
+}

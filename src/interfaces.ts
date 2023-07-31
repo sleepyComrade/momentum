@@ -20,6 +20,7 @@ export interface ISettingsData {
   name: string;
   city: string;
   quotes: string;
+  music: string;
 }
 
 export interface ILangWeather {
@@ -43,4 +44,10 @@ export interface ILangWeather {
     cityError1: string;
     cityError2: string;
   };
+}
+
+export interface ITrack {
+  title: string;
+  src: any;
+  duration: string;
 }
