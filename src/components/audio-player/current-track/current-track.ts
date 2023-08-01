@@ -18,12 +18,14 @@ export class CurrentTrack extends Element<HTMLElement> {
     super(parent, 'div', className);
     this.playlist = playlist;
     this.audio = new Audio();
-    this.audio.src = this.getTrack(0);
+    this.audio.src = this.getTrack(0) + '';
     this.trackNum = 0;
     this.curTime = 0;
     this.isPLay = false;
     this.controls = new ControlsWrap(this.el, 'controls-wrap', this.playlist);
     this.progress = new Progress(this.el, 'progress-duration-wrap');
+
+    this.audio.volume = this.controls.getVolume();
 
     this.audio.onplay = () => {
       this.audio.ontimeupdate = () => {
@@ -42,6 +44,13 @@ export class CurrentTrack extends Element<HTMLElement> {
     this.controls.onSwitch = (n) => {
       this.switchAudio(n);
     }
+    this.controls.onInput = (value) => {
+      this.audio.volume = value;
+    }
+    this.controls.onClick = () => {
+      this.controls.setIcon(this.audio.muted);
+      this.audio.muted = !this.audio.muted;
+    }
 
     this.progress.onSetTime = (degree) => {
       this.curTime = (degree * this.audio.duration) / 360;
@@ -58,7 +67,7 @@ export class CurrentTrack extends Element<HTMLElement> {
 
   initSwitch() {
     this.audio.pause();
-    this.audio.src = this.getTrack(0);
+    this.audio.src = this.getTrack(0) + '';
     this.trackNum = 0;
     this.isPLay = false;
     this.curTime = 0;
@@ -67,7 +76,7 @@ export class CurrentTrack extends Element<HTMLElement> {
 
   playAudio() {
     if (!this.isPLay) {
-      this.audio.src = this.getTrack(this.trackNum);
+      this.audio.src = this.getTrack(this.trackNum) + '';
       this.audio.currentTime = this.curTime;
       this.audio.play();
       this.isPLay = true;

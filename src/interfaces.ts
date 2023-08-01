@@ -48,6 +48,6 @@ export interface ILangWeather {
 
 export interface ITrack {
   title: string;
-  src: any;
+  src: typeof module;
   duration: string;
 }

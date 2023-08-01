@@ -11,6 +11,8 @@ export class ControlsWrap extends Element<HTMLElement> {
   onPlay: () => void;
   onSwitch: (n: number) => void;
   playlist: { [sw: string]: ITrack[]; side: ITrack[]; };
+  onInput: (value: number) => void;
+  onClick: () => void;
   constructor(parent: HTMLElement, className: string, playlist: { [sw: string]: ITrack[]; side: ITrack[]; }) {
     super(parent, 'div', className);
     this.playlist = playlist;
@@ -21,9 +23,15 @@ export class ControlsWrap extends Element<HTMLElement> {
     this.controls.onPlay = () => {
       this.onPlay();
     }
-
     this.controls.onSwitch = (n) => {
       this.onSwitch(n);
+    }
+
+    this.volume.onInput = (value) => {
+      this.onInput(value);
+    }
+    this.volume.onClick = () => {
+      this.onClick();
     }
 
     this.textOverflow(this.title, this.playlist[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).music][0]);
@@ -34,11 +42,19 @@ export class ControlsWrap extends Element<HTMLElement> {
   }
 
   textOverflow(element: Element<HTMLElement>, track: ITrack) {
-    element.el.textContent = track.title.length > 19 ? track.title.slice(0, 19) + '..' : track.title;
+    element.el.textContent = track.title.length > 18 ? track.title.slice(0, 18) + '..' : track.title;
     element.el.setAttribute('title', `${track.title}`);
   }
 
   getCurTitle(track: ITrack) {
     this.textOverflow(this.title, track);
+  }
+
+  getVolume() {
+    return this.volume.getVolume();
+  }
+
+  setIcon(isMuted: boolean) {
+    this.volume.setIcon(isMuted);
   }
 }
