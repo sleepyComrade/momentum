@@ -42,6 +42,7 @@ export class Progress extends Element<HTMLElement> {
     this.setPlayerImg();
 
     this.bar.el.onclick = (e) => {
+      this.removeBarTransition();
       const target = e.target as HTMLElement;
       if (target.classList.contains('progress-bar') ||
       target.classList.contains('half-circle-cover') ||
@@ -50,15 +51,15 @@ export class Progress extends Element<HTMLElement> {
         this.rotateProgressBar();
         this.durationContent.el.textContent = `${this.convertTime(false)} / ${this.convertTime(true)}`;
       }
+      setTimeout(() => {
+        this.addBarTransition();
+      }, 0);
     }
 
     this.barSliderWrap.el.onmousedown = (e) => {
       this.isMoving = true;
       this.getCurTimeOnMouse(e.clientX, e.clientY);
-      this.barCircle.el.classList.remove('bar-transition');
-      this.barSliderWrap.el.classList.remove('bar-transition');
-      this.halfCircles.forEach(el => el.el.classList.remove('bar-transition'));
-      this.halfCircleCover.el.classList.remove('bar-transition');
+      this.removeBarTransition();
     }
 
     document.addEventListener('mousemove', (e) => {
@@ -70,13 +71,24 @@ export class Progress extends Element<HTMLElement> {
 
     document.addEventListener('mouseup', () => {
       if (this.isMoving) {
-        this.barCircle.el.classList.add('bar-transition');
-        this.barSliderWrap.el.classList.add('bar-transition');
-        this.halfCircles.forEach(el => el.el.classList.add('bar-transition'));
-        this.halfCircleCover.el.classList.add('bar-transition');
+        this.addBarTransition();
       }
       this.isMoving = false;
     });
+  }
+
+  addBarTransition() {
+    this.barCircle.el.classList.add('bar-transition');
+    this.barSliderWrap.el.classList.add('bar-transition');
+    this.halfCircles.forEach(el => el.el.classList.add('bar-transition'));
+    this.halfCircleCover.el.classList.add('bar-transition');
+  }
+
+  removeBarTransition() {
+    this.barCircle.el.classList.remove('bar-transition');
+    this.barSliderWrap.el.classList.remove('bar-transition');
+    this.halfCircles.forEach(el => el.el.classList.remove('bar-transition'));
+    this.halfCircleCover.el.classList.remove('bar-transition');
   }
 
   setPlayerImg() {
