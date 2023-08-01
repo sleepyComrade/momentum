@@ -1,0 +1,19 @@
+.setting-background {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  transition: all 0.2s ease-out;
+}
+
+#background {
+  width: 90%;
+  padding: 5px;
+  font-size: 18px;
+  color: rgb(24, 24, 24);
+  background-color: rgb(225, 225, 225);
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}

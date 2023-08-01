@@ -55,7 +55,6 @@
   background-color: transparent;
 }
 
-.setting-block,
 .todo-section {
   position: relative;
   width: 95%;
@@ -63,105 +62,6 @@
   font-size: 18px;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
-}
-
-.setting-block h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-#language,
-#background {
-  width: 90%;
-  padding: 5px;
-  font-size: 18px;
-  color: rgb(24, 24, 24);
-  background-color: rgb(225, 225, 225);
-  border: none;
-  border-radius: 5px;
-  outline: none;
-}
-
-.tags-block {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.2s ease-out;
-}
-
-.tag-input-container {
-  width: 210px;
-  margin: 12px 0 10px;
-}
-
-.tag-input-container input {
-  max-width: 210px;
-}
-
-.setting-background {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  transition: all 0.2s ease-out;
-}
-
-.overlay-tag {
-  z-index: 1;
-  position: absolute;
-  top: 5px;
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
-  border-radius: 10px;
-  visibility: hidden;
-}
-
-.overlay-tag-visible {
-  visibility: visible;
-}
-
-.tags {
-  padding: 5px 32px 5px 10px;
-  font-size: 16px;
-  background-color: rgb(225, 225, 225);
-  border: 1px solid black;
-  border-radius: 20px;
-  outline: none;
-  transition: all 0.2 ease;
-}
-
-.tags-disabled {
-  background-color: rgba(225, 225, 225, 0.5);
-  border: 1px solid rgba(0, 0, 0, 0.5);
-}
-
-.add-tag-button {
-  padding: 5px 15px;
-  font-size: 18px;
-  color: white;
-  background-color: #15a857;
-  border-radius: 10px;
-  border: none;
-  box-shadow: 2px 2px 3px 1px rgb(11, 151, 55), inset 6px 6px 10px 0 rgba(255, 255, 255, 0.2), inset -6px -6px 10px 0 rgba(0, 0, 0, 0.2);
-  outline: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.add-tag-button-disabled {
-  background-color: #15a8577f;
-  box-shadow: none;
-}
-
-.add-tag-button:hover {
-  background-color: #17b35d;
-}
-
-.add-tag-button:active {
-  box-shadow: 1px 1px 3px 1px rgb(11, 151, 55);
 }
 
 .widgets-container,
@@ -186,58 +86,6 @@
   margin: 0;
   padding: 0;
   background-color: rgb(135, 135, 135);
-}
-
-.tag-input-container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-}
-
-.tag-adding {
-  position: absolute;
-  right: 1px;
-  width: 28px;
-  height: 28px;
-  background-color: #15a857;
-  box-shadow: inset 6px 6px 10px 0 rgba(255, 255, 255, 0.2), inset -6px -6px 10px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 50%;
-  transition: all 0.2s ease;
-}
-
-.tag-adding-disabled {
-  background-color: #15a85783;
-  box-shadow: none;
-}
-
-.tag-adding:active {
-  box-shadow: none;
-}
-
-.check-icon {
-  width: 28px;
-  height: 28px;
-  background-image: url('./assets/svg/check.svg');
-  filter: brightness(0) invert(1);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  cursor: pointer;
-}
-
-.tags-wrap {
-  display: flex;
-  margin-top: 5px;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  transition: all 0.2s ease;
-}
-
-.tags-wrap-disabled {
-  color: rgb(126, 126, 126)
 }
 
 .tag-item {

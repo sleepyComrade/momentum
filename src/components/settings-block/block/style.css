@@ -1,0 +1,13 @@
+.setting-block {
+  position: relative;
+  width: 95%;
+  padding: 10px;
+  font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+}
+
+.setting-block h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
