@@ -1,7 +1,7 @@
 import './style.css';
 import { Element } from "../../abstract/element";
 import { ILangGreetings } from "../../interfaces";
-import { greetings } from "../../const";
+import { greetings } from "../../translation-const";
 import { getTimeOfDay } from "../../const";
 
 export class Greeting extends Element<HTMLDivElement> {

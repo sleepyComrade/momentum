@@ -10,13 +10,13 @@ export class DateInfo extends Element<HTMLDivElement> {
       ru: 'ru'
     }
   }
-  showDate(lang: string) {
+  showDate() {
     const options: {
       weekday: 'long';
       month: 'long';
       day: 'numeric';
     } = {weekday: 'long', month: 'long', day: 'numeric'};
-    const currentDate = new Date().toLocaleDateString(this.langs[lang], options);
+    const currentDate = new Date().toLocaleDateString(this.langs[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language], options);
     this.el.textContent = currentDate.charAt(0).toUpperCase() + currentDate.slice(1);
   }
 }

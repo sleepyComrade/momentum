@@ -16,4 +16,8 @@ export class Header extends Element<HTMLElement> {
       this.onCityChange(value);
     }
   }
+
+  setLang() {
+    this.weather.getWeather(JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language);
+  }
 }

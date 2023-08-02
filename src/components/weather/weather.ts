@@ -1,6 +1,6 @@
 import './style.css';
 import { Element } from "../../abstract/element";
-import { weather } from "../../const";
+import { weather } from "../../translation-const";
 import { ILangWeather } from "../../interfaces";
 
 export class Weather extends Element<HTMLElement> {

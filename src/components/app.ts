@@ -44,6 +44,14 @@ export class App extends Element<HTMLDivElement> {
       parent.style.backgroundImage = value;
     }
 
+    this.footer.onLangChange = (value) => {
+      this.data.language = value;
+      this.localStorageUpdate();
+      this.header.setLang();
+      this.main.setLang();
+      this.footer.setLang();
+    }
+
     window.onload = () => {
       setTimeout(() => {
         this.loader.fadeOut();

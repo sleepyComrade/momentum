@@ -51,3 +51,13 @@ export interface ITrack {
   src: typeof module;
   duration: string;
 }
+
+export interface ISettingsLangOptions {
+  [en: string]: { [lang0: string]: string; lang1: string };
+  ru: { lang0: string; lang1: string };
+}
+
+export interface ISectionTitles {
+  [en: string]: { [title0: string]: string; title1: string; title2: string; title3: string };
+  ru: { title0: string; title1: string; title2: string; title3: string };
+}

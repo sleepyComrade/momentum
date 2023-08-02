@@ -7,4 +7,8 @@ export class Block extends Element<HTMLElement> {
     super(parent, 'div', 'setting-block');
     this.title = new Element(this.el, 'h3', 'setting-section');
   }
+
+  setTitle(value: string) {
+    this.title.el.textContent = value;
+  }
 }

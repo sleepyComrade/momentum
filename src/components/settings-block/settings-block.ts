@@ -7,6 +7,7 @@ export class SettingsBlock extends Element<HTMLElement> {
   overlay: Element<HTMLElement>;
   popup: Popup;
   isVisible: boolean;
+  onLangChange: (value: string) => void;
   constructor(parent: HTMLElement, className: string) {
     super(parent, 'div', className);
     this.isVisible = false;
@@ -21,6 +22,10 @@ export class SettingsBlock extends Element<HTMLElement> {
     this.overlay.el.onclick = () => {
       this.toggleSettings();
     }
+
+    this.popup.onLangChange = (value) => {
+      this.onLangChange(value);
+    }
   }
 
   toggleSettings() {
@@ -28,5 +33,9 @@ export class SettingsBlock extends Element<HTMLElement> {
     this.icon.el.style.transform = this.isVisible ? 'rotate(0deg)' : 'rotate(90deg)';
     this.overlay.el.classList.toggle('main-overlay-active');
     this.isVisible = !this.isVisible;
+  }
+
+  setLang() {
+    this.popup.setTitles();
   }
 }

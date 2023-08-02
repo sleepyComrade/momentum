@@ -29,10 +29,16 @@ export class Main extends Element<HTMLElement> {
 
     const update = () => {
       this.time.showTime();
-      this.date.showDate(JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language);
+      this.date.showDate();
       this.greeting.showGreeting(JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language);
       setTimeout(update, 1000);
     }
     update();
+  }
+
+  setLang() {
+    this.greeting.showGreeting(JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language);
+    this.greeting.updateSize();
+    this.date.showDate();
   }
 }
