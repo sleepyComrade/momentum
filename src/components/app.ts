@@ -20,6 +20,7 @@ export class App extends Element<HTMLDivElement> {
       city: '',
       quotes: 'sw',
       music: 'sw',
+      background: 'flickr',
       tags: []
     }
     if (localStorage.sleepyComradeMomentum) {
@@ -44,6 +45,18 @@ export class App extends Element<HTMLDivElement> {
     this.main.onBgLoad = (value) => {
       parent.style.backgroundImage = value;
     }
+    this.main.onBgPreload = (source) => {
+      return this.footer.getTags(source);
+    }
+    this.main.onBgChange = (value) => {
+      this.changeBg(value);
+      this.footer.setBgValue();
+    }
+    this.main.onCompleteLoad = () => {
+      setTimeout(() => {
+        this.loader.fadeOut();
+      }, 700);
+    }
 
     this.footer.onLangChange = (value) => {
       this.data.language = value;
@@ -56,15 +69,22 @@ export class App extends Element<HTMLDivElement> {
       this.data.tags = list;
       this.localStorageUpdate();
     }
-
-    window.onload = () => {
-      setTimeout(() => {
-        this.loader.fadeOut();
-      }, 700);
+    this.footer.onApply = () => {
+      this.main.setBg();
+    }
+    this.footer.onBgChange = (value) => {
+      this.changeBg(value);
     }
   }
 
   localStorageUpdate() {
     localStorage.setItem('sleepyComradeMomentum', JSON.stringify(this.data));
+  }
+
+  changeBg(value: string) {
+    this.data.background = value;
+    this.localStorageUpdate();
+    this.main.setBg();
+    this.footer.disableTags();
   }
 }

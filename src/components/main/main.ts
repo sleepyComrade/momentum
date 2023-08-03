@@ -12,6 +12,9 @@ export class Main extends Element<HTMLElement> {
   greeting: Greeting;
   onNameChange: (value: string) => void;
   onBgLoad: (value: string) => void;
+  onBgPreload: (source: string) => string;
+  onCompleteLoad: () => void;
+  onBgChange: (value: string) => void;
   constructor(parent: HTMLElement, className: string) {
     super(parent, 'main', className);
     this.sliderButtons = new SliderButtons(this.el, 'slider-icons');
@@ -25,6 +28,15 @@ export class Main extends Element<HTMLElement> {
 
     this.sliderButtons.onBgLoad = (value) => {
       this.onBgLoad(value);
+    }
+    this.sliderButtons.onBgPreload = (source) => {
+      return this.onBgPreload(source);
+    }
+    this.sliderButtons.onCompleteLoad = () => {
+      this.onCompleteLoad();
+    }
+    this.sliderButtons.onBgChange = (value) => {
+      this.onBgChange(value);
     }
 
     const update = () => {
@@ -40,5 +52,9 @@ export class Main extends Element<HTMLElement> {
     this.greeting.showGreeting(JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language);
     this.greeting.updateSize();
     this.date.showDate();
+  }
+
+  setBg() {
+    this.sliderButtons.setBg();
   }
 }

@@ -21,6 +21,7 @@ export class TagsBlock extends Element<HTMLElement> {
   timeOfDay: string[];
   tags: Tag[];
   onTagUpdate: (list: string[]) => void;
+  onApply: () => void;
   constructor(parent: HTMLElement, className: string) {
     super(parent, 'div', className);
     this.applyButtonContent = {
@@ -54,6 +55,7 @@ export class TagsBlock extends Element<HTMLElement> {
     this.tagList.forEach(el => {
       this.generateTag(el);
     })
+    this.disableTags();
 
     this.input.el.oninput = () => {
       const removedSpaces = this.input.el.value.replace(/\s/g, '');
@@ -65,6 +67,10 @@ export class TagsBlock extends Element<HTMLElement> {
 
     this.icon.el.onclick = () => {
       this.addTag();
+    }
+
+    this.applyButton.el.onclick = () => {
+      this.onApply();
     }
   }
 
@@ -99,6 +105,7 @@ export class TagsBlock extends Element<HTMLElement> {
         this.input.el.placeholder = this.placeholderContent[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language].add;
         this.input.el.disabled = false;
       }
+      this.createApiChunk();
     }
     this.tags.push(tag);
     this.createApiChunk();
@@ -118,5 +125,29 @@ export class TagsBlock extends Element<HTMLElement> {
         this.input.el.disabled = true;
       }
     }
+  }
+
+  disableTags() {
+    const value = JSON.parse(localStorage.getItem('sleepyComradeMomentum')).background;
+    if (value === 'sw') {
+      this.overlay.el.classList.add('overlay-tag-visible');
+      this.applyButton.el.classList.add('add-tag-button-disabled');
+      this.tagsWrap.el.classList.add('tags-wrap-disabled');
+      this.addButton.el.classList.add('tag-adding-disabled');
+      this.input.el.classList.add('tags-disabled');
+    } else {
+      this.overlay.el.classList.remove('overlay-tag-visible');
+      this.applyButton.el.classList.remove('add-tag-button-disabled');
+      this.tagsWrap.el.classList.remove('tags-wrap-disabled');
+      this.addButton.el.classList.remove('tag-adding-disabled');
+      this.input.el.classList.remove('tags-disabled');
+    }
+    this.tags.forEach(el => {
+      el.disableTag(value);
+    });
+  }
+
+  getTags(source: string) {
+    return source === 'flickr' ? this.flickrTags : this.unsplashTags;
   }
 }

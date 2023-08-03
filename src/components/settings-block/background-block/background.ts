@@ -10,6 +10,8 @@ export class Background extends Block {
   option3: Element<HTMLOptionElement>;
   tags: TagsBlock;
   onTagUpdate: (list: string[]) => void;
+  onApply: () => void;
+  onBgChange: (value: string) => void;
   constructor(parent: HTMLElement) {
     super(parent);
     this.el.classList.add('setting-background');
@@ -23,14 +25,35 @@ export class Background extends Block {
     this.option3 = new Element(this.select.el, 'option', '', 'Flickr');
     this.option3.el.setAttribute('value', 'flickr');
 
+    this.setBgValue();
     this.tags = new TagsBlock(this.el, 'tags-block');
-    
+
+    this.select.el.onchange = (e) => {
+      const target = e.target as HTMLSelectElement;
+      this.onBgChange(target.value);
+    }
+
     this.tags.onTagUpdate = (list) => {
       this.onTagUpdate(list);
+    }
+    this.tags.onApply = () => {
+      this.onApply();
     }
   }
 
   setLang() {
     this.tags.setContent(JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language);
+  }
+
+  getTags(source: string) {
+    return this.tags.getTags(source);
+  }
+
+  disableTags() {
+    this.tags.disableTags();
+  }
+
+  setBgValue() {
+    this.select.el.value = JSON.parse(localStorage.getItem('sleepyComradeMomentum')).background;
   }
 }

@@ -30,7 +30,7 @@ export class Language extends Block {
     this.select.el.value = JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language;
 
     this.select.el.onchange = (e) => {
-      const target = e.target as HTMLSelectElement;      
+      const target = e.target as HTMLSelectElement;
       this.onLangChange(target.value);
       this.setLangOptions();
     }

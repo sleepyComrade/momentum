@@ -16,4 +16,10 @@ export class Tag extends Element<HTMLElement> {
       this.onClick();
     }
   }
+
+  disableTag(value: string) {
+    if (value === 'sw') {
+      this.button.el.classList.add('tag-close-disabled');
+    } else this.button.el.classList.remove('tag-close-disabled');
+  }
 }

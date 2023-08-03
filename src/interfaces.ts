@@ -21,6 +21,7 @@ export interface ISettingsData {
   city: string;
   quotes: string;
   music: string;
+  background: string;
   tags: string[];
 }
 

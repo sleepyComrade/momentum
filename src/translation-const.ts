@@ -74,3 +74,8 @@ export const inputPlaceholderText = {
     full: 'Слишком много тегов'
   }
 }
+
+export const setUnsplashAlert = {
+  en: 'You have reached the unsplash hour limit! You can try again later. Please use another background resource.',
+  ru: 'Вы превысили часовой лимит ресурса Unsplash! Попробуйте еще раз через некоторое время. Пожалуйста, используйте другой источник фона.'
+}
