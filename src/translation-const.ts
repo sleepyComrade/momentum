@@ -63,3 +63,14 @@ export const settingSectionTitles = {
     title3: 'Управление темой'
   }
 }
+
+export const inputPlaceholderText = {
+  en: {
+    add: 'Add a tag',
+    full: 'Too many tags'
+  },
+  ru: {
+    add: 'Добавьте тег',
+    full: 'Слишком много тегов'
+  }
+}

@@ -19,7 +19,8 @@ export class App extends Element<HTMLDivElement> {
       name: '',
       city: '',
       quotes: 'sw',
-      music: 'sw'
+      music: 'sw',
+      tags: []
     }
     if (localStorage.sleepyComradeMomentum) {
       this.data = JSON.parse(localStorage.getItem('sleepyComradeMomentum'));
@@ -50,6 +51,10 @@ export class App extends Element<HTMLDivElement> {
       this.header.setLang();
       this.main.setLang();
       this.footer.setLang();
+    }
+    this.footer.onTagUpdate = (list) => {
+      this.data.tags = list;
+      this.localStorageUpdate();
     }
 
     window.onload = () => {

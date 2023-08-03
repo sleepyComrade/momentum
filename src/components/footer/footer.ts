@@ -7,6 +7,7 @@ export class Footer extends Element<HTMLElement> {
   quote: Quote;
   settings: SettingsBlock;
   onLangChange: (value: string) => void;
+  onTagUpdate: (list: string[]) => void;
   constructor(parent: HTMLElement, className: string) {
     super(parent, 'footer', className);
     this.settings = new SettingsBlock(this.el, 'settings-block');
@@ -14,6 +15,9 @@ export class Footer extends Element<HTMLElement> {
 
     this.settings.onLangChange = (value) => {
       this.onLangChange(value);
+    }
+    this.settings.onTagUpdate = (list) => {
+      this.onTagUpdate(list);
     }
   }
 

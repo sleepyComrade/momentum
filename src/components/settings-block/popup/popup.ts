@@ -10,6 +10,7 @@ export class Popup extends Element<HTMLElement> {
   background: Background;
   onLangChange: (value: string) => void;
   content: ISectionTitles;
+  onTagUpdate: (list: string[]) => void;
   constructor(parent: HTMLElement, className: string) {
     super(parent, 'div', className);
     this.content = settingSectionTitles;
@@ -21,6 +22,10 @@ export class Popup extends Element<HTMLElement> {
     this.language.onLangChange = (value) => {
       this.onLangChange(value);
     }
+
+    this.background.onTagUpdate = (list) => {
+      this.onTagUpdate(list);
+    }
   }
 
   setTitles() {
@@ -30,5 +35,10 @@ export class Popup extends Element<HTMLElement> {
 
   movePopup() {
     this.el.classList.toggle('setting-move');
+  }
+
+  setLang() {
+    this.setTitles();
+    this.background.setLang();
   }
 }

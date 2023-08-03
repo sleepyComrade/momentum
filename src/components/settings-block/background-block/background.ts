@@ -9,6 +9,7 @@ export class Background extends Block {
   option2: Element<HTMLOptionElement>;
   option3: Element<HTMLOptionElement>;
   tags: TagsBlock;
+  onTagUpdate: (list: string[]) => void;
   constructor(parent: HTMLElement) {
     super(parent);
     this.el.classList.add('setting-background');
@@ -23,5 +24,13 @@ export class Background extends Block {
     this.option3.el.setAttribute('value', 'flickr');
 
     this.tags = new TagsBlock(this.el, 'tags-block');
+    
+    this.tags.onTagUpdate = (list) => {
+      this.onTagUpdate(list);
+    }
+  }
+
+  setLang() {
+    this.tags.setContent(JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language);
   }
 }

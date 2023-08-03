@@ -8,6 +8,7 @@ export class SettingsBlock extends Element<HTMLElement> {
   popup: Popup;
   isVisible: boolean;
   onLangChange: (value: string) => void;
+  onTagUpdate: (list: string[]) => void;
   constructor(parent: HTMLElement, className: string) {
     super(parent, 'div', className);
     this.isVisible = false;
@@ -26,6 +27,9 @@ export class SettingsBlock extends Element<HTMLElement> {
     this.popup.onLangChange = (value) => {
       this.onLangChange(value);
     }
+    this.popup.onTagUpdate = (list) => {
+      this.onTagUpdate(list);
+    }
   }
 
   toggleSettings() {
@@ -36,6 +40,6 @@ export class SettingsBlock extends Element<HTMLElement> {
   }
 
   setLang() {
-    this.popup.setTitles();
+    this.popup.setLang();
   }
 }

@@ -21,6 +21,7 @@ export interface ISettingsData {
   city: string;
   quotes: string;
   music: string;
+  tags: string[];
 }
 
 export interface ILangWeather {
@@ -58,6 +59,16 @@ export interface ISettingsLangOptions {
 }
 
 export interface ISectionTitles {
-  [en: string]: { [title0: string]: string; title1: string; title2: string; title3: string };
+  [en: string]: {
+    [title0: string]: string;
+    title1: string;
+    title2: string;
+    title3: string;
+  };
   ru: { title0: string; title1: string; title2: string; title3: string };
+}
+
+export interface ITagsPlaceholder {
+  [en: string]: { [add: string]: string; full: string };
+  ru: { add: string; full: string };
 }
