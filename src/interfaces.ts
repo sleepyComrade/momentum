@@ -15,6 +15,11 @@ export interface ILangGreetings {
   };
 }
 
+export interface ITodoData {
+  tasks: string[],
+  state: boolean[]
+}
+
 export interface ISettingsData {
   language: string;
   name: string;
@@ -23,6 +28,7 @@ export interface ISettingsData {
   music: string;
   background: string;
   tags: string[];
+  todo: ITodoData;
 }
 
 export interface ILangWeather {

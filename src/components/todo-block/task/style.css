@@ -1,0 +1,94 @@
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: rgb(230, 230, 230);
+}
+
+.edit-task,
+.delete-task {
+  width: 22px;
+  height: 22px;
+  box-shadow: inset 6px 6px 10px 0 rgba(255, 255, 255, 0.2), inset -6px -6px 10px 0 rgba(0, 0, 0, 0.2);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.edit-task {
+  background-image: url('../../../assets/svg/pencil.svg');
+  background-size: 15px;
+  background-color: rgba(26, 190, 99, 0.7);
+}
+
+.delete-task {
+  background-image: url('../../../assets/svg/x.svg');
+  background-color: rgba(255, 159, 159, 0.946);
+}
+
+.delete-task:active {
+  box-shadow: none;
+}
+
+.task-check {
+  width: 180px;
+  display: flex;
+  gap: 10px;
+}
+
+.task-btns-block {
+  display: flex;
+  gap: 5px;
+}
+
+.task-check p {
+  outline: none;
+  word-break: break-all;
+}
+
+.finished p {
+  text-decoration: line-through;
+  color: rgb(100, 100, 100);
+}
+
+.task-checkbox {
+  outline: none;
+}
+
+.apply-task-wrap {
+  width: 22px;
+  height: 22px;
+  background-color: #15a857;
+  box-shadow: inset 6px 6px 10px 0 rgba(255, 255, 255, 0.2), inset -6px -6px 10px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.apply-task-wrap:active {
+  box-shadow: none;
+}
+
+.apply-edit-task {
+  width: 22px;
+  height: 22px;
+  background-image: url('../../../assets/svg/check.svg');
+  filter: brightness(0) invert(1);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.edit-input {
+  flex: 1;
+  font-size: 17px;
+  padding: 1px 3px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+}
