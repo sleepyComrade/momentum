@@ -22,10 +22,7 @@ export class App extends Element<HTMLDivElement> {
       music: 'sw',
       background: 'sw',
       tags: [],
-      todo: {
-        tasks: ['html'],
-        state: [true]
-      }
+      todo: []
     }
     if (localStorage.sleepyComradeMomentum) {
       this.data = JSON.parse(localStorage.getItem('sleepyComradeMomentum'));
@@ -78,6 +75,10 @@ export class App extends Element<HTMLDivElement> {
     }
     this.footer.onBgChange = (value) => {
       this.changeBg(value);
+    }
+    this.footer.onTasksUpdate = (data) => {
+      this.data.todo = data;
+      this.localStorageUpdate();
     }
   }
 

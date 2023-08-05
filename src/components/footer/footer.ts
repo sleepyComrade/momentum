@@ -3,6 +3,7 @@ import { Element } from "../../abstract/element";
 import { Quote } from "../quote/quote";
 import { SettingsBlock } from "../settings-block/settings-block";
 import { TodoBlock } from "../todo-block/todo-block";
+import { ITodoData } from '../../interfaces';
 
 export class Footer extends Element<HTMLElement> {
   quote: Quote;
@@ -12,6 +13,7 @@ export class Footer extends Element<HTMLElement> {
   onApply: () => void;
   onBgChange: (value: string) => void;
   todo: TodoBlock;
+  onTasksUpdate: (data: ITodoData[]) => void;
   constructor(parent: HTMLElement, className: string) {
     super(parent, 'footer', className);
     this.settings = new SettingsBlock(this.el, 'settings-block');
@@ -29,6 +31,10 @@ export class Footer extends Element<HTMLElement> {
     }
     this.settings.onBgChange = (value) => {
       this.onBgChange(value);
+    }
+
+    this.todo.onTasksUpdate = (data) => {
+      this.onTasksUpdate(data);
     }
   }
 

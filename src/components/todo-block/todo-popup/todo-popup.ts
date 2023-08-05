@@ -10,11 +10,14 @@ export class TodoPopup extends Element<HTMLElement> {
   input: Element<HTMLInputElement>;
   button: Element<HTMLElement>;
   tasks: Task[];
-  data: ITodoData;
+  data: ITodoData[];
+  isFirstLoad: boolean;
+  onTasksUpdate: (data: ITodoData[]) => void;
   constructor(parent: HTMLElement, className: string) {
     super(parent, 'div', className);
     this.tasks = [];
     this.data = JSON.parse(localStorage.getItem('sleepyComradeMomentum')).todo;
+    this.isFirstLoad = true;
     this.todo = new Element(this.el, 'div', 'todo-section');
     this.list = new Element(this.todo.el, 'div', 'task-list');
     this.inputWrap = new Element(this.todo.el, 'div', 'input-wrap');
@@ -23,10 +26,11 @@ export class TodoPopup extends Element<HTMLElement> {
     this.input.el.setAttribute('placeholder', 'New task');
     this.button = new Element(this.inputWrap.el, 'button', 'input-button', 'Add');
 
-    this.data.tasks.forEach((el, i) => {
-      this.addTask(el);
-      this.tasks[i].setCheckbox(this.data.state[i]);
+    this.data.forEach((el, i) => {
+      this.addTask(el.task);
+      this.tasks[i].setCheckbox(el.state);
     })
+    this.isFirstLoad = false;
 
     this.input.el.oninput = () => {
       if (this.input.el.value.trim()) {
@@ -64,10 +68,28 @@ export class TodoPopup extends Element<HTMLElement> {
       const i = this.tasks.indexOf(task);
       task.destroy();
       this.tasks.splice(i, 1);
-      // this.tagList.splice(i, 1);
-      // this.onTagUpdate(this.tagList);
+      this.data.splice(i, 1);
+      this.onTasksUpdate(this.data);
+    }
+    task.onStateChange = (state) => {
+      const i = this.tasks.indexOf(task);
+      this.data[i].state = state;
+      this.onTasksUpdate(this.data);
+    }
+    task.onEdit = (value, state) => {
+      const i = this.tasks.indexOf(task);
+      this.data[i].task = value;
+      this.data[i].state = state;
+      this.onTasksUpdate(this.data);
     }
     this.tasks.push(task);
+    if (!this.isFirstLoad) {
+      this.data.push({
+        task: value,
+        state: false
+      });
+      this.onTasksUpdate(this.data);
+    }
     this.input.el.value = '';
     this.button.el.classList.remove('active');
   }

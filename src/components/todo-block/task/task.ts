@@ -13,6 +13,8 @@ export class Task extends Element<HTMLElement> {
   input: Element<HTMLInputElement>;
   applyButton: Element<HTMLElement>;
   applyWrap: Element<HTMLElement>;
+  onStateChange: (state: boolean) => void;
+  onEdit: (value: string, state: boolean) => void;
   constructor(parent: HTMLElement, className: string, value: string) {
     super(parent, 'div', className);
     this.content = value;
@@ -39,6 +41,7 @@ export class Task extends Element<HTMLElement> {
       } else {
         this.taskCheck.el.classList.remove('finished');
       }
+      this.onStateChange(this.checkbox.el.checked);
     }
 
     this.editButton.el.onclick = () => {
@@ -76,6 +79,7 @@ export class Task extends Element<HTMLElement> {
         this.checkbox.el.checked = true;
         this.taskCheck.el.classList.add('finished');
       }
+      this.onEdit(this.content, boxState);
     } else this.onClick();
   }
 
