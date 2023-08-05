@@ -2,6 +2,7 @@ import './style.css';
 import { Element } from "../../abstract/element";
 import { getTimeOfDay } from "../../const";
 import { setUnsplashAlert } from "../../translation-const";
+import { ISimpleLang } from '../../interfaces';
 
 export class SliderButtons extends Element<HTMLDivElement> {
   prevButton: Element<HTMLElement>;
@@ -9,7 +10,7 @@ export class SliderButtons extends Element<HTMLDivElement> {
   photoNum: number;
   onBgLoad: (value: string) => void;
   canSlide: boolean;
-  unsplashAlert: { [en: string]: string; ru: string; };
+  unsplashAlert: ISimpleLang;
   onBgPreload: (source: string) => string;
   isFirstLoad: boolean;
   onCompleteLoad: () => void;

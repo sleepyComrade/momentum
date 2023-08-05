@@ -1,7 +1,7 @@
 import './style.css';
 import { Element } from "../../../abstract/element";
 import { Task } from "../task/task";
-import { ITodoData } from "../../../interfaces";
+import { ITodoData, ISimpleLang } from "../../../interfaces";
 
 export class TodoPopup extends Element<HTMLElement> {
   todo: Element<HTMLElement>;
@@ -13,8 +13,18 @@ export class TodoPopup extends Element<HTMLElement> {
   data: ITodoData[];
   isFirstLoad: boolean;
   onTasksUpdate: (data: ITodoData[]) => void;
+  placeholderContent: ISimpleLang;
+  buttonContent: ISimpleLang;
   constructor(parent: HTMLElement, className: string) {
     super(parent, 'div', className);
+    this.placeholderContent = {
+      en: 'New task',
+      ru: 'Новое дело'
+    };
+    this.buttonContent = {
+      en: 'Add',
+      ru: 'Добавить'
+    };
     this.tasks = [];
     this.data = JSON.parse(localStorage.getItem('sleepyComradeMomentum')).todo;
     this.isFirstLoad = true;
@@ -23,8 +33,8 @@ export class TodoPopup extends Element<HTMLElement> {
     this.inputWrap = new Element(this.todo.el, 'div', 'input-wrap');
     this.input = new Element(this.inputWrap.el, 'input', 'input-task');
     this.input.el.setAttribute('type', 'text');
-    this.input.el.setAttribute('placeholder', 'New task');
-    this.button = new Element(this.inputWrap.el, 'button', 'input-button', 'Add');
+    this.input.el.setAttribute('placeholder', this.placeholderContent[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language]);
+    this.button = new Element(this.inputWrap.el, 'button', 'input-button', this.buttonContent[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language]);
 
     this.data.forEach((el, i) => {
       this.addTask(el.task);
@@ -92,5 +102,10 @@ export class TodoPopup extends Element<HTMLElement> {
     }
     this.input.el.value = '';
     this.button.el.classList.remove('active');
+  }
+
+  setLang() {
+    this.input.el.setAttribute('placeholder', this.placeholderContent[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language]);
+    this.button.el.textContent = this.buttonContent[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language];
   }
 }

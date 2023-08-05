@@ -41,6 +41,7 @@ export class Footer extends Element<HTMLElement> {
   setLang() {
     this.settings.setLang();
     this.quote.getQuotes(JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language);
+    this.todo.setLang();
   }
 
   getTags(source: string) {

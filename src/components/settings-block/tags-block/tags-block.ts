@@ -1,7 +1,7 @@
 import './style.css';
 import { Element } from "../../../abstract/element";
 import { inputPlaceholderText } from "../../../translation-const";
-import { ITagsPlaceholder } from "../../../interfaces";
+import { ISimpleLang, ITagsPlaceholder } from "../../../interfaces";
 import { Tag } from "../tag/tag";
 import { getTimeOfDay } from "../../../const";
 
@@ -13,7 +13,7 @@ export class TagsBlock extends Element<HTMLElement> {
   icon: Element<HTMLElement>;
   applyButton: Element<HTMLElement>;
   tagsWrap: Element<HTMLElement>;
-  applyButtonContent: { [en: string]: string; ru: string; };
+  applyButtonContent: ISimpleLang;
   tagList: string[];
   placeholderContent: ITagsPlaceholder;
   unsplashTags: string;

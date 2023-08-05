@@ -79,3 +79,8 @@ export interface ITagsPlaceholder {
   [en: string]: { [add: string]: string; full: string };
   ru: { add: string; full: string };
 }
+
+export interface ISimpleLang {
+  [en: string]: string;
+  ru: string;
+}

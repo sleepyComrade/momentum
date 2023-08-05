@@ -1,17 +1,22 @@
 import './style.css';
 import { Element } from "../../abstract/element";
 import { TodoPopup } from "../todo-block/todo-popup/todo-popup";
-import { ITodoData } from '../../interfaces';
+import { ISimpleLang, ITodoData } from '../../interfaces';
 
 export class TodoBlock extends Element<HTMLElement> {
   overlay: Element<HTMLElement>;
   popup: TodoPopup;
   button: Element<HTMLElement>;
   onTasksUpdate: (data: ITodoData[]) => void;
+  content: ISimpleLang;
   constructor(parent: HTMLElement, className: string) {
     super(parent, 'div', className);
+    this.content = {
+      en: 'Todo',
+      ru: 'Список дел'
+    };
     this.overlay = new Element(this.el, 'div', 'todo-overlay');
-    this.button = new Element(this.el, 'span', 'todo-button', 'Todo');
+    this.button = new Element(this.el, 'span', 'todo-button', this.content[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language]);
     this.popup = new TodoPopup(this.el, 'todo-wrap');
 
     this.overlay.el.onclick = () => {
@@ -32,7 +37,8 @@ export class TodoBlock extends Element<HTMLElement> {
     this.overlay.el.classList.toggle('todo-overlay-active');
   }
 
-  // setLang() {
-  //   this.popup.setLang();
-  // }
+  setLang() {
+    this.button.el.textContent = this.content[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language];
+    this.popup.setLang();
+  }
 }
