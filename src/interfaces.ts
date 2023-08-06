@@ -29,6 +29,7 @@ export interface ISettingsData {
   background: string;
   tags: string[];
   todo: ITodoData[];
+  widgets: string[];
 }
 
 export interface ILangWeather {
@@ -83,4 +84,25 @@ export interface ITagsPlaceholder {
 export interface ISimpleLang {
   [en: string]: string;
   ru: string;
+}
+
+export interface IWidgetsTitles {
+  [en: string]: {
+    [name0: string]: string;
+    name1: string;
+    name2: string;
+    name3: string;
+    name4: string;
+    name5: string;
+    name6: string;
+  },
+  ru: {
+    name0: string;
+    name1: string;
+    name2: string;
+    name3: string;
+    name4: string;
+    name5: string;
+    name6: string;
+  }
 }

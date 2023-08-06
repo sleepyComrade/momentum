@@ -22,7 +22,8 @@ export class App extends Element<HTMLDivElement> {
       music: 'sw',
       background: 'sw',
       tags: [],
-      todo: []
+      todo: [],
+      widgets: ['true', 'true', 'true', 'true', 'true', 'true', 'true']
     }
     if (localStorage.sleepyComradeMomentum) {
       this.data = JSON.parse(localStorage.getItem('sleepyComradeMomentum'));

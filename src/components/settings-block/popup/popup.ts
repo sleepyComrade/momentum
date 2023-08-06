@@ -2,6 +2,7 @@ import './style.css';
 import { Element } from "../../../abstract/element";
 import { Language } from "../language-block/language";
 import { Background } from "../background-block/background";
+import { Widgets } from "../widgets-block/widgets";
 import { settingSectionTitles } from "../../../translation-const";
 import { ISectionTitles } from "../../../interfaces";
 
@@ -13,11 +14,13 @@ export class Popup extends Element<HTMLElement> {
   onTagUpdate: (list: string[]) => void;
   onApply: () => void;
   onBgChange: (value: string) => void;
+  widgets: Widgets;
   constructor(parent: HTMLElement, className: string) {
     super(parent, 'div', className);
     this.content = settingSectionTitles;
     this.language = new Language(this.el);
     this.background = new Background(this.el);
+    this.widgets = new Widgets(this.el);
 
     this.setTitles();
 
@@ -39,6 +42,7 @@ export class Popup extends Element<HTMLElement> {
   setTitles() {
     this.language.setTitle(this.content[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language].title0);
     this.background.setTitle(this.content[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language].title1);
+    this.widgets.setTitle(this.content[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language].title2);
   }
 
   movePopup() {
@@ -48,6 +52,7 @@ export class Popup extends Element<HTMLElement> {
   setLang() {
     this.setTitles();
     this.background.setLang();
+    this.widgets.setLang();
   }
 
   getTags(source: string) {
