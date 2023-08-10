@@ -12,8 +12,10 @@ export class App extends Element<HTMLDivElement> {
   loader: Loader;
   header: Header;
   footer: Footer;
+  isFirstLoad: boolean;
   constructor(parent: HTMLElement, className: string) {
     super(parent, 'div', className);
+    this.isFirstLoad = true;
     this.data = {
       language: 'en',
       name: '',
@@ -23,7 +25,7 @@ export class App extends Element<HTMLDivElement> {
       background: 'sw',
       tags: [],
       todo: [],
-      widgets: ['true', 'true', 'true', 'true', 'true', 'true', 'true']
+      widgets: [false, false, false, false, false, false, false]
     }
     if (localStorage.sleepyComradeMomentum) {
       this.data = JSON.parse(localStorage.getItem('sleepyComradeMomentum'));
@@ -34,6 +36,11 @@ export class App extends Element<HTMLDivElement> {
     this.header = new Header(this.el, 'header');
     this.main = new Main(this.el, 'main');
     this.footer = new Footer(this.el, 'footer');
+
+    this.data.widgets.forEach((el, i) => {
+      this.setState(el, i, this.isFirstLoad);
+    })
+    this.isFirstLoad = false;
 
     this.header.onCityChange = (value) => {
       this.data.city = value;
@@ -81,6 +88,11 @@ export class App extends Element<HTMLDivElement> {
       this.data.todo = data;
       this.localStorageUpdate();
     }
+    this.footer.onWidgetChange = (state, i) => {
+      this.setState(state, i, this.isFirstLoad);
+      this.data.widgets[i] = state;
+      this.localStorageUpdate();
+    }
   }
 
   localStorageUpdate() {
@@ -92,5 +104,23 @@ export class App extends Element<HTMLDivElement> {
     this.localStorageUpdate();
     this.main.setBg();
     this.footer.disableTags();
+  }
+
+  setState(state: boolean, i: number, isFirstLoad: boolean) {
+    switch (i) {
+      case 0:
+      case 1:
+        this.header.setState(state, i, isFirstLoad);
+        break;
+      case 2:
+      case 3:
+      case 4:
+        this.main.setState(state, i, isFirstLoad);
+        break;
+      case 5:
+      case 6:
+        this.footer.setState(state, i, isFirstLoad);
+        break;
+    }
   }
 }

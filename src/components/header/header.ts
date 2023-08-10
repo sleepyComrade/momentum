@@ -20,4 +20,21 @@ export class Header extends Element<HTMLElement> {
   setLang() {
     this.weather.getWeather(JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language);
   }
+
+  setState(state: boolean, i: number, isFirstLoad: boolean) {
+    if (i === 0) {
+      if (isFirstLoad) {
+        this.player.setDefaultState(state);
+      } else {
+        this.player.setState(state);
+      }
+    }
+    if (i === 1) {
+      if (isFirstLoad) {
+        this.weather.setDefaultState(state);
+      } else {
+        this.weather.setState(state);
+      }
+    }
+  }
 }

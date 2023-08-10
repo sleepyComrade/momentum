@@ -12,6 +12,7 @@ export class Footer extends Element<HTMLElement> {
   onTagUpdate: (list: string[]) => void;
   onApply: () => void;
   onBgChange: (value: string) => void;
+  onWidgetChange: (state: boolean, i: number) => void;
   todo: TodoBlock;
   onTasksUpdate: (data: ITodoData[]) => void;
   constructor(parent: HTMLElement, className: string) {
@@ -31,6 +32,9 @@ export class Footer extends Element<HTMLElement> {
     }
     this.settings.onBgChange = (value) => {
       this.onBgChange(value);
+    }
+    this.settings.onWidgetChange = (state, i) => {
+      this.onWidgetChange(state, i)
     }
 
     this.todo.onTasksUpdate = (data) => {
@@ -54,5 +58,22 @@ export class Footer extends Element<HTMLElement> {
 
   setBgValue() {
     this.settings.setBgValue();
+  }
+
+  setState(state: boolean, i: number, isFirstLoad: boolean) {
+    if (i === 5) {
+      if (isFirstLoad) {
+        this.quote.setDefaultState(state);
+      } else {
+        this.quote.setState(state);
+      }
+    }
+    if (i === 6) {
+      if (isFirstLoad) {
+        this.todo.setDefaultState(state);
+      } else {
+        this.todo.setState(state);
+      }
+    }
   }
 }

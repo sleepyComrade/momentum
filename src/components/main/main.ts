@@ -57,4 +57,31 @@ export class Main extends Element<HTMLElement> {
   setBg() {
     this.sliderButtons.setBg();
   }
+
+  setState(state: boolean, i: number, isFirstLoad: boolean) {
+    if (i === 2) {
+      if (isFirstLoad) {
+        this.time.setDefaultState(state)
+      } else {
+        this.time.setState(state);
+      }
+    }
+    if (i === 3) {
+      if (isFirstLoad) {
+        this.date.setDefaultState(state)
+      } else {
+        this.date.setState(state);
+      }
+    }
+    if (i === 4) {
+      if (isFirstLoad) {
+        this.greeting.setDefaultState(state)
+      } else {
+        this.greeting.setState(state);
+        setTimeout(() => {
+          this.greeting.updateSize();
+        }, 300);
+      }
+    }
+  }
 }

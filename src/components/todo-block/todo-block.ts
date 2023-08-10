@@ -41,4 +41,15 @@ export class TodoBlock extends Element<HTMLElement> {
     this.button.el.textContent = this.content[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language];
     this.popup.setLang();
   }
+
+  setDefaultState(state: boolean) {  
+    if (!state) {
+      this.button.el.style.scale = '0';
+    }
+    this.button.el.classList.add('block-transition');
+  }
+
+  setState(state: boolean) {
+    this.button.el.style.scale = state ? '1' : '0';
+  }
 }

@@ -58,4 +58,17 @@ export class Greeting extends Element<HTMLDivElement> {
       this.input.el.value = this.input.el.value.slice(0, 19);
     }
   }
+
+  setDefaultState(state: boolean) {
+    if (!state) {
+      this.el.style.scale = '0';
+      this.el.classList.toggle('block-zero-height');
+    }
+    this.el.classList.add('block-transition');
+  }
+
+  setState(state: boolean) {
+    this.el.style.scale = state ? '1' : '0';
+    this.el.classList.toggle('block-zero-height');
+  }
 }

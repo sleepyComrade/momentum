@@ -29,7 +29,7 @@ export interface ISettingsData {
   background: string;
   tags: string[];
   todo: ITodoData[];
-  widgets: string[];
+  widgets: boolean[];
 }
 
 export interface ILangWeather {

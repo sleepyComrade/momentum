@@ -14,6 +14,7 @@ export class Popup extends Element<HTMLElement> {
   onTagUpdate: (list: string[]) => void;
   onApply: () => void;
   onBgChange: (value: string) => void;
+  onWidgetChange: (state: boolean, i: number) => void;
   widgets: Widgets;
   constructor(parent: HTMLElement, className: string) {
     super(parent, 'div', className);
@@ -36,6 +37,10 @@ export class Popup extends Element<HTMLElement> {
     }
     this.background.onBgChange = (value) => {
       this.onBgChange(value);
+    }
+
+    this.widgets.onWidgetChange = (state, i) => {
+      this.onWidgetChange(state, i);
     }
   }
 

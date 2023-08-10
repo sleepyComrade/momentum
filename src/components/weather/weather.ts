@@ -83,4 +83,15 @@ export class Weather extends Element<HTMLElement> {
       this.humidity.el.textContent = `${this.content[lang]['humidity']}: ${Math.round(data.main['humidity'])}%`;
     }
   }
+
+  setDefaultState(state: boolean) {    
+    if (!state) {
+      this.el.style.scale = '0';
+    }
+    this.el.classList.add('block-transition');
+  }
+
+  setState(state: boolean) {
+    this.el.style.scale = state ? '1' : '0';
+  }
 }
