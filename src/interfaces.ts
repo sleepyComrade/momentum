@@ -16,8 +16,8 @@ export interface ILangGreetings {
 }
 
 export interface ITodoData {
-  task: string,
-  state: boolean
+  task: string;
+  state: boolean;
 }
 
 export interface ISettingsData {
@@ -30,6 +30,7 @@ export interface ISettingsData {
   tags: string[];
   todo: ITodoData[];
   widgets: boolean[];
+  themes: boolean[];
 }
 
 export interface ILangWeather {
@@ -95,7 +96,7 @@ export interface IWidgetsTitles {
     name4: string;
     name5: string;
     name6: string;
-  },
+  };
   ru: {
     name0: string;
     name1: string;
@@ -104,5 +105,10 @@ export interface IWidgetsTitles {
     name4: string;
     name5: string;
     name6: string;
-  }
+  };
+}
+
+export interface IThemesTitles {
+  [en: string]: { [name0: string]: string; name1: string };
+  ru: { name0: string; name1: string };
 }

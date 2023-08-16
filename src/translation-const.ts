@@ -100,3 +100,14 @@ export const widgetsTitles = {
     name6: 'Список дел'
   }
 }
+
+export const themesTitles = {
+  en: {
+    name0: 'Theme music',
+    name1: 'Theme quotes'
+  },
+  ru: {
+    name0: 'Тематическая музыка',
+    name1: 'Тематические цитаты'
+  }
+}

@@ -12,6 +12,7 @@ export class SettingsBlock extends Element<HTMLElement> {
   onApply: () => void;
   onBgChange: (value: string) => void;
   onWidgetChange: (state: boolean, i: number) => void;
+  onThemeChange: (state: boolean, i: number) => void;
   constructor(parent: HTMLElement, className: string) {
     super(parent, 'div', className);
     this.isVisible = false;
@@ -41,6 +42,9 @@ export class SettingsBlock extends Element<HTMLElement> {
     }
     this.popup.onWidgetChange = (state, i) => {
       this.onWidgetChange(state, i);
+    }
+    this.popup.onThemeChange = (state, i) => {
+      this.onThemeChange(state, i);
     }
   }
 

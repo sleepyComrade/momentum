@@ -13,6 +13,7 @@ export class Footer extends Element<HTMLElement> {
   onApply: () => void;
   onBgChange: (value: string) => void;
   onWidgetChange: (state: boolean, i: number) => void;
+  onThemeChange: (state: boolean, i: number) => void;
   todo: TodoBlock;
   onTasksUpdate: (data: ITodoData[]) => void;
   constructor(parent: HTMLElement, className: string) {
@@ -36,6 +37,9 @@ export class Footer extends Element<HTMLElement> {
     this.settings.onWidgetChange = (state, i) => {
       this.onWidgetChange(state, i)
     }
+    this.settings.onThemeChange = (state, i) => {
+      this.onThemeChange(state, i);
+    }
 
     this.todo.onTasksUpdate = (data) => {
       this.onTasksUpdate(data);
@@ -44,7 +48,7 @@ export class Footer extends Element<HTMLElement> {
 
   setLang() {
     this.settings.setLang();
-    this.quote.getQuotes(JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language);
+    this.quote.getQuotes();
     this.todo.setLang();
   }
 
@@ -75,5 +79,9 @@ export class Footer extends Element<HTMLElement> {
         this.todo.setState(state);
       }
     }
+  }
+
+  updateQuotes() {
+    this.quote.getQuotes();
   }
 }

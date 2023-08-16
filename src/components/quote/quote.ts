@@ -21,17 +21,17 @@ export class Quote extends Element<HTMLElement> {
     this.author = new Element(this.quoteWrap.el, 'div', 'author');
 
     this.button.el.onclick = () => {
-      this.getQuotes(JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language);
+      this.getQuotes();
       this.button.el.style.transform = `rotate(${this.degree}deg)`;
       this.degree += 180;
     }
 
-    this.getQuotes(JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language);
+    this.getQuotes();
   }
 
-  async getQuotes(lang: string) {
+  async getQuotes() {
     try {
-      const quotes = `https://raw.githubusercontent.com/sleepycomrade/Star-Wars-Collection/main/quotes/${this.quotesTheme[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).quotes]}-${lang}.json`;
+      const quotes = `https://raw.githubusercontent.com/sleepycomrade/Star-Wars-Collection/main/quotes/${this.quotesTheme[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).quotes]}-${JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language}.json`;
       const res = await fetch(quotes);
       const data = await res.json();
     

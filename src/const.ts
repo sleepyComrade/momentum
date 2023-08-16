@@ -11,6 +11,8 @@ import side3 from "./assets/sounds/Gobbledigook.mp3";
 import side4 from "./assets/sounds/Unsainted.mp3";
 import side5 from "./assets/sounds/NHS.mp3";
 
+import { ISettingsData } from "./interfaces";
+
 export const playLists = {
   sw: [
     {
@@ -71,6 +73,19 @@ export const playLists = {
       duration: '03:26'
     }
   ]
+}
+
+export const defaultData: ISettingsData = {
+  language: 'en',
+  name: '',
+  city: '',
+  quotes: 'sw',
+  music: 'sw',
+  background: 'sw',
+  tags: [],
+  todo: [],
+  widgets: [true, true, true, true, true, true, true],
+  themes: [true, true]
 }
 
 export const getTimeOfDay = () => {

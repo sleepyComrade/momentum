@@ -3,6 +3,7 @@ import { Element } from "../../../abstract/element";
 import { Language } from "../language-block/language";
 import { Background } from "../background-block/background";
 import { Widgets } from "../widgets-block/widgets";
+import { Theme } from "../theme-block/theme";
 import { settingSectionTitles } from "../../../translation-const";
 import { ISectionTitles } from "../../../interfaces";
 
@@ -15,13 +16,16 @@ export class Popup extends Element<HTMLElement> {
   onApply: () => void;
   onBgChange: (value: string) => void;
   onWidgetChange: (state: boolean, i: number) => void;
+  onThemeChange: (state: boolean, i: number) => void;
   widgets: Widgets;
+  theme: Theme;
   constructor(parent: HTMLElement, className: string) {
     super(parent, 'div', className);
     this.content = settingSectionTitles;
     this.language = new Language(this.el);
     this.background = new Background(this.el);
     this.widgets = new Widgets(this.el);
+    this.theme = new Theme(this.el);
 
     this.setTitles();
 
@@ -42,12 +46,17 @@ export class Popup extends Element<HTMLElement> {
     this.widgets.onWidgetChange = (state, i) => {
       this.onWidgetChange(state, i);
     }
+
+    this.theme.onThemeChange = (state, i) => {
+      this.onThemeChange(state, i);
+    }
   }
 
   setTitles() {
     this.language.setTitle(this.content[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language].title0);
     this.background.setTitle(this.content[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language].title1);
     this.widgets.setTitle(this.content[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language].title2);
+    this.theme.setTitle(this.content[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).language].title3);
   }
 
   movePopup() {
@@ -58,6 +67,7 @@ export class Popup extends Element<HTMLElement> {
     this.setTitles();
     this.background.setLang();
     this.widgets.setLang();
+    this.theme.setLang();
   }
 
   getTags(source: string) {

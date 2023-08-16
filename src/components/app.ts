@@ -5,6 +5,7 @@ import { Main } from "./main/main";
 import { Footer } from "./footer/footer";
 import { Loader } from "./loader/loader";
 import { ISettingsData } from "../interfaces";
+import { defaultData } from '../const';
 
 export class App extends Element<HTMLDivElement> {
   main: Main;
@@ -16,17 +17,7 @@ export class App extends Element<HTMLDivElement> {
   constructor(parent: HTMLElement, className: string) {
     super(parent, 'div', className);
     this.isFirstLoad = true;
-    this.data = {
-      language: 'en',
-      name: '',
-      city: '',
-      quotes: 'sw',
-      music: 'sw',
-      background: 'sw',
-      tags: [],
-      todo: [],
-      widgets: [false, false, false, false, false, false, false]
-    }
+    this.data = defaultData;
     if (localStorage.sleepyComradeMomentum) {
       this.data = JSON.parse(localStorage.getItem('sleepyComradeMomentum'));
     } else {
@@ -92,6 +83,19 @@ export class App extends Element<HTMLDivElement> {
       this.setState(state, i, this.isFirstLoad);
       this.data.widgets[i] = state;
       this.localStorageUpdate();
+    }
+    this.footer.onThemeChange = (state, i) => {
+      this.data.themes[i] = state;
+      if (!i) {
+        this.data.music = state ? 'sw' : 'side';
+        this.localStorageUpdate();
+        this.header.updatePlayer();
+      }
+      if (i) {
+        this.data.quotes = state ? 'sw' : 'side';
+        this.localStorageUpdate();
+        this.footer.updateQuotes();
+      }
     }
   }
 

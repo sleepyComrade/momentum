@@ -37,4 +37,8 @@ export class Header extends Element<HTMLElement> {
       }
     }
   }
+
+  updatePlayer() {
+    // this.player.
+  }
 }
