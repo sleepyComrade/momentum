@@ -39,6 +39,6 @@ export class Header extends Element<HTMLElement> {
   }
 
   updatePlayer() {
-    // this.player.
+    this.player.updatePlayer();
   }
 }

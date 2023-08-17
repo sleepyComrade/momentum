@@ -40,4 +40,10 @@ export class Player extends Element<HTMLElement> {
   setState(state: boolean) {
     this.el.style.scale = state ? '1' : '0';
   }
+
+  updatePlayer() {
+    this.playlist.createPlaylist();
+    this.currentTrack.updatePlayer();
+    this.currentTrack.initSwitch();
+  }
 }

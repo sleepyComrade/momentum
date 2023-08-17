@@ -110,4 +110,14 @@ export class CurrentTrack extends Element<HTMLElement> {
   getTrack(num: number) {
     return this.playlist[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).music][num].src;
   }
+
+  updatePlayer() {
+    this.progress.setBarZero();
+    if (!this.audio.paused) {
+      this.controls.togglePlayButton();
+    }
+    this.progress.setPlayerImg();
+    this.controls.setTitle();
+    this.progress.initCurTime();
+  }
 }

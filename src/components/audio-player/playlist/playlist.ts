@@ -11,15 +11,15 @@ export class Playlist extends Element<HTMLElement> {
     super(parent, 'ul', className);
     this.playlist = playlist;
     this.items = [];
-    this.createPlaylist(JSON.parse(localStorage.getItem('sleepyComradeMomentum')).music);
+    this.createPlaylist();
   }
 
-  createPlaylist(cur: string) {
+  createPlaylist() {
     if (this.items.length) {
       this.items.forEach(el => el.destroy());
     }
     this.items = [];
-    this.playlist[cur].forEach(el => {
+    this.playlist[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).music].forEach(el => {
       const item = new ListItem(this.el, 'play-item', el);
       const index = this.items.length;
       item.onClick = (bool) => {

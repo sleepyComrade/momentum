@@ -34,7 +34,7 @@ export class ControlsWrap extends Element<HTMLElement> {
       this.onClick();
     }
 
-    this.textOverflow(this.title, this.playlist[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).music][0]);
+    this.setTitle();
   }
 
   togglePlayButton() {
@@ -48,6 +48,10 @@ export class ControlsWrap extends Element<HTMLElement> {
 
   getCurTitle(track: ITrack) {
     this.textOverflow(this.title, track);
+  }
+
+  setTitle() {
+    this.textOverflow(this.title, this.playlist[JSON.parse(localStorage.getItem('sleepyComradeMomentum')).music][0]);
   }
 
   getVolume() {
