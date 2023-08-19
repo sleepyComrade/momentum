@@ -13,6 +13,13 @@
   }
 }
 
+@media (max-height: 690px) {
+  .time {
+    height: 88px;
+    font-size: 72px;
+  }
+}
+
 @media (max-width: 550px) {
   .time {
     height: 45px;

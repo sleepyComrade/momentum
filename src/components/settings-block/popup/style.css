@@ -38,3 +38,9 @@
 .settings-wrap::-webkit-scrollbar-corner {
   background-color: transparent;
 }
+
+@media (max-width: 550px) {
+  .setting-move {
+    transform: translateX(316px);
+  }
+}

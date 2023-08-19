@@ -9,6 +9,13 @@
   padding-bottom: 0;
 }
 
+@media (max-height: 700px) {
+  .header {
+    padding: 5px 10px 20px;
+    min-height: 160px;
+  }
+}
+
 @media (max-width: 550px) {
   .header {
     padding: 10px;
