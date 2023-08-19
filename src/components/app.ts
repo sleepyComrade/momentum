@@ -55,6 +55,9 @@ export class App extends Element<HTMLDivElement> {
     this.main.onCompleteLoad = () => {
       setTimeout(() => {
         this.loader.fadeOut();
+        setTimeout(() => {
+          this.loader.destroy();
+        }, 500);
       }, 700);
     }
 
