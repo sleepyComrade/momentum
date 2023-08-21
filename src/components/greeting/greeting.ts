@@ -29,6 +29,7 @@ export class Greeting extends Element<HTMLDivElement> {
     this.input.el.onblur = () => {
       this.isNameLong();
       this.updateSize();
+      this.onNameChange(this.input.el.value);
     }
     this.input.el.oninput = () => {
       this.isNameLong();
@@ -37,10 +38,6 @@ export class Greeting extends Element<HTMLDivElement> {
 
     this.input.el.value = JSON.parse(localStorage.getItem('sleepyComradeMomentum')).name;
     this.updateSize();
-
-    window.addEventListener('beforeunload', () => {
-      this.onNameChange(this.input.el.value);
-    });
   }
 
   showGreeting(lang: string) {
