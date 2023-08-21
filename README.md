@@ -4,7 +4,7 @@ Immerse yourself in a unique browsing experience with the Star Wars Momentum Chr
 
 ## Installation:
 
-1. **Download the Extension:** Begin by downloading the extension from the provided Google Drive link. You can find the downloadable zip file [here](https://drive.google.com/file/d/16IWTvFVhjZRyb7b3Jhle-L-FSLM4itEl/view?usp=sharing).
+1. **Download the Extension:** Begin by downloading the extension from the provided Google Drive link. You can find the downloadable zip file [here](https://drive.google.com/file/d/1cZ_J3S9rxaUwDQCOD6QGLrY2N_NphkwI/view?usp=sharing).
 
 2. **Unpack the Downloaded Zip:** Once the download is complete, unzip the downloaded file to reveal the extension's contents.
 
