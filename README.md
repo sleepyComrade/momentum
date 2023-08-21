@@ -4,7 +4,7 @@ Immerse yourself in a unique browsing experience with the Star Wars Momentum Chr
 
 ## Installation:
 
-1. **Download the Extension:** Begin by downloading the extension from the provided Google Drive link. You can find the downloadable zip file [here](link-to-google-drive).
+1. **Download the Extension:** Begin by downloading the extension from the provided Google Drive link. You can find the downloadable zip file [here](https://drive.google.com/file/d/1ghMx1TC94KlSssFt2977_nTjekHwI1fO/view?usp=sharing).
 
 2. **Unpack the Downloaded Zip:** Once the download is complete, unzip the downloaded file to reveal the extension's contents.
 
@@ -14,7 +14,7 @@ Immerse yourself in a unique browsing experience with the Star Wars Momentum Chr
 
 5. **Load the Extension:** Click on the "Load unpacked" button and select the folder containing the unpacked extension files(the one you unziped).
 
-6. **Start Exploring:** Once the extension is loaded, you'll see the Star Wars Momentum Chrome Extension icon in your browser. Click on it to start your intergalactic browsing journey!
+6. **Start Exploring:** Once the extension is loaded, you'll see the Star Wars Momentum Chrome Extension in your browser list of extensions and it'll also be launched with a new tab. You can pin the extension in order to always have the access to it at the top of any browser tab. Open a new tab to start your intergalactic browsing journey!
 
 ## Clock and Calendar - Galactic Timekeeping:
 
@@ -91,6 +91,9 @@ Immerse yourself in a unique browsing experience with the Star Wars Momentum Chr
 - The app includes a robust to-do feature.
 - Perform classic CRUD operations: Create, Read, Update, and Delete tasks.
 
-Begin your journey into a fusion of Star Wars and productivity with the Star Wars Momentum Chrome Extension. Explore more on our [website](link-to-website) or dive into the [GitHub repository](link-to-repo).
+## Contributions:
+Contributions to this project are welcome! If you encounter any issues or have suggestions for improvements, feel free to submit a pull request or create an issue on the GitHub repository.
+
+Begin your journey into a fusion of Star Wars and productivity with the Star Wars Momentum Chrome Extension. Check out deployed version of [extension](https://sleepycomrade.github.io/momentum/) or dive into the [GitHub repository](https://github.com/sleepyComrade/momentum).
 
 *Note: This extension is inspired by the Star Wars universe and is not affiliated with Lucasfilm Ltd. or the official Star Wars franchise.*
